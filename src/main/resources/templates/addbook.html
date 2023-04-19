@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<style>
+    .container {
+        height: 180px;
+        position: relative;
+        border: 3px solid green;
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .button {
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: #4CAF50;
+        top: 50%;
+    }
+</style>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <title>Добавить книгу в библиотеку</title>
+</head>
+<body>
+<div class="container">
+<form th:method="GET" th:action="@{/library}">
+    <div>
+        <button th:type="submit" class="button button1">Назад</button>
+    </div>
+</form>
+
+        <h1 th:align="center">Добавить книгу в библиотеку</h1>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+        <form th:method="POST" th:action="@{/library}" enctype="multipart/form-data">
+            <table class="center">
+                <tr>
+                    <th th:align="center">
+                        <div>
+                            <h4> Загрузить файл </h4>
+                        </div>
+                    </th>
+                    <td></td>
+                    <th th:align="center">
+                        <div>
+                            <input type="file" name="file" class="inputfile">
+                        </div>
+                    </th>
+                    <th th:align="center">
+                        <div>
+                            <input type="text" name="name" placeholder="Введите название книги">
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <select name="type">
+                                <option th:each="type : ${T(ru.ivvasch.niolibrary.model.Type).values()}"
+                                        th:value="${type}" th:text="${type}"></option>
+                            </select>
+                        </div>
+                    </th>
+                    <td></td>
+                    <th th:align="center">
+                        <div>
+                            <button th:type="submit" th:class="btn-primary">Загрузить</button>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <div th:each="type : ${java}">
+                        <a th:href="@{/library/(id = ${book.id})}" th:text="${book.name}">JAVABOOK</a>
+                    </div>
+                </tr>
+            </table>
+        </form>
+</div>
+</body>
+</html>
