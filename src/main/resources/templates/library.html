@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<style>
+    .button {
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: #4CAF50;
+        top: 50%;
+    }
+</style>
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <title>Страница с книгами</title>
+</head>
+<body>
+<h1 align="center">Библиотека книг по программированию</h1>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<form th:object="${book}">
+    <table th:align="center" th:cellpadding="5">
+        <tr>
+            <th>
+                <div class="section">
+                    <h2>Java</h2>
+                    <img th:src="@{/images/java.jpg}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="java">
+                    <h3>Книги по java</h3>
+                    <div th:each="book : ${java}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">JAVABOOK</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>Python</h2>
+                    <img th:src="@{/images/python.png}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="python">
+                    <h3>Книги по python</h3>
+                    <div th:each="book : ${python}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">PYTHONBOOK</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>SQL</h2>
+                    <img th:src="@{/images/SQL.png}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="sql">
+                    <h3>Книги по SQL</h3>
+                    <div th:each="book : ${sql}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">SQLBOOK</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>C++</h2>
+                    <img th:src="@{/images/cpp.jpg}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="cpp">
+                    <h3>Книги по C++</h3>
+                    <div th:each="book : ${cpp}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">C++ BOOK</a>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        <th>
+            <br/><br/><br/>
+        </th>
+        <tr>
+            <th>
+                <div class="section">
+                    <h2>GO</h2>
+                    <img th:src="@{/images/go.jpg}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="go">
+                    <h3>Книги по GO</h3>
+                    <div th:each="book : ${go}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">GO BOOK</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>C#</h2>
+                    <img th:src="@{/images/c-sharp.png}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="c_sharp">
+                    <h3>Книги по C#</h3>
+                    <div th:each="book : ${c_sharp}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">С# BOOK</a></div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>Ruby</h2>
+                    <img th:src="@{/images/ruby.jpg}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="ruby">
+                    <h3>Книги по RUBY</h3>
+                    <div th:each="book : ${ruby}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">RUBYBOOK</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="section">
+                    <h2>Pascal</h2>
+                    <img th:src="@{/images/turbo-pascal.jpg}"/>
+                    <br/>
+                </div>
+            </th>
+            <th>
+                <div class="type-group" id="pascal">
+                    <h3>Книги по Turbo Pascal</h3>
+                    <div th:each="book : ${pascal}">
+                        <a th:href="@{/library/{name}(name = ${book.getFileName()})}" th:text="${book.name}">Pascal BOOK</a>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </table>
+    <br/>
+</form>
+<form  th:method="GET" th:action="@{/library/upload}">
+    <div class="container">
+        <div>
+    <button class="button button1" type="submit">Загрузить книгу</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
