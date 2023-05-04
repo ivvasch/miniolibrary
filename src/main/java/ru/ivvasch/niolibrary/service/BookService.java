@@ -14,3 +14,4 @@ public interface BookService {
 
     String getTypeOfBook(String fileName);
 }
+
